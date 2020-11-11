@@ -1,0 +1,5 @@
+1. run uduser-api
+    docker run --env-file env/uduser-dev.env uduser  
+
+2. run udfeed-api
+    docker run --env-file env/udfeed-dev.env edfeed
