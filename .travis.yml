@@ -1,10 +1,8 @@
-language: node_js
-node_js:
-  - 12
-
-services:
-  - docker
-
+language: minimal
+services: docker
+env:
+  - DOCKER_COMPOSE_VERSION=1.4.2
+  
 # Pre-testing installs
 install:
   - echo "nothing needs to be installed"
@@ -17,7 +15,7 @@ before_script:
 script:
   - docker build udagram-api-user -t udfeed:latest
   - docker build udagram-api-feed -t vdj4y/udagram:uduser-latest
-
+  - docker build udagram-frontend -t udfrontend
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
