@@ -2,8 +2,8 @@
 2. make sure Docker run api-user locally
 3. docker push api-user
 4. dockerfile api-feed
-5. dockerfile for udfrontend
-6. reverse-proxy
+5. dockerfile for udfrontend Done
+6. reverse-proxy done
 
 #kubectl
 4. setup deployment.yaml

@@ -2,7 +2,7 @@ language: minimal
 services: docker
 env:
   - DOCKER_COMPOSE_VERSION=1.4.2
-  
+
 # Pre-testing installs
 install:
   - echo "nothing needs to be installed"
@@ -13,10 +13,14 @@ before_script:
 
 # Scripts to be run such as tests
 script:
-  - docker build udagram-api-user -t udfeed:latest
-  - docker build udagram-api-feed -t vdj4y/udagram:uduser-latest
-  - docker build udagram-frontend -t udfrontend
+  - docker build udagram-api-user -t vdj4y/udagram-user
+  - docker build udagram-api-feed -t vdj4y/udagram-feed
+  - docker build udagram-frontend -t vdj4y/udagram-frontend
+  - docker build udagram-reverse-proxy -t vdj4y/udagram-nginx
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push vdj4y/udagram:uduser-latest
+  - docker push vdj4y/udagram-user
+  - docker push vdj4y/udagram-frontend
+  - docker push vdj4y/udagram-feed
+  - docker push vdj4y/udagram-nginx
