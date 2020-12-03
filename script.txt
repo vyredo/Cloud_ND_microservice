@@ -1,5 +1,11 @@
 1. run uduser-api
-    docker run --env-file env/uduser-dev.env uduser  
+    docker run -d -p 8080:8080 --env-file env/uduser-dev.env uduser  
 
 2. run udfeed-api
-    docker run --env-file env/udfeed-dev.env edfeed
+    docker run -d -p 8080:8080 --env-file env/udfeed-dev.env udfeed 
+
+3. run frontend
+    docker run udfrontend
+
+4. run proxy
+    docker run 
