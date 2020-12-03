@@ -1,0 +1,46 @@
+version: "3.8"
+services:
+  reverseproxy:
+      image: vdj4y/udagram-reverse-proxy
+      ports:
+          - 8080:8080
+      restart: always
+      depends_on:
+        - backend-user
+        - backend-feed     
+  backend-user:
+    image: vdj4y/udagram-api-user
+    volumes:
+      - $HOME/.aws:/root/.aws
+    environment:
+      DB_USERNAME: $DB_USERNAME
+      DB_PASSWORD: $DB_PASSWORD 
+      DB_NAME: $DB_NAME 
+      DB_HOST: $DB_HOST 
+      AWS_REGION: $AWS_REGION 
+      AWS_PROFILE: $AWS_PROFILE 
+      AWS_MEDIA_BUCKET: $AWS_MEDIA_BUCKET
+      JWT_SECRET: $JWT_SECRET
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+      ACCESS_CONTROL_ALLOW_ORIGIN: $ACCESS_CONTROL_ALLOW_ORIGIN
+  backend-feed:
+    image: vdj4y/udagram-api-feed
+    volumes:
+      - $HOME/.aws:/root/.aws
+    environment:
+      DB_USERNAME: $DB_USERNAME
+      DB_PASSWORD: $DB_PASSWORD 
+      DB_NAME: $DB_NAME 
+      DB_HOST: $DB_HOST
+      AWS_REGION: $AWS_REGION 
+      AWS_PROFILE: $AWS_PROFILE 
+      AWS_MEDIA_BUCKET: $AWS_MEDIA_BUCKET
+      JWT_SECRET: $JWT_SECRET
+      AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY 
+      ACCESS_CONTROL_ALLOW_ORIGIN: $ACCESS_CONTROL_ALLOW_ORIGIN
+  frontend:
+    image: vdj4y/udagram-frontend
+    ports:
+      - "8100:80"

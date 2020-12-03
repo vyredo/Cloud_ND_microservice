@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  reverseproxy:
+    build:
+      context: ../../udagram-reverse-proxy
+    image: vdj4y/udagram-reverse-proxy
+  backend_user:
+    build:
+      context: ../../udagram-api-user
+    image: vdj4y/udagram-api-user
+  backend_feed:
+    build:
+      context: ../../udagram-api-feed
+    image: vdj4y/udagram-api-feed
+  frontend:
+    build:
+      context: ../../udagram-frontend
+    image: vdj4y/udagram-frontend
