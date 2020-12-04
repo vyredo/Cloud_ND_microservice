@@ -15,4 +15,3 @@ Open a new terminal within the project directory and run:
 4. Run the containers: `docker-compose up`
 
 ![dockercomposeup](../../screenshots/dockercomposeup.png)
-
