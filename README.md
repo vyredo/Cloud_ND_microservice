@@ -17,14 +17,31 @@ The project is split into two parts:
 3. `cd udagram-deployment/k8s`
 4. `kubectl apply -f .`
 
+# Docker Hub
+
+Screenshot of DockerHub shows the images.
+![dockerimages](screenshots/dockerimages.png)
+
 # Travis 
 1. setup travis ci/cd
 ![travis](screenshots/travis.png)
 
 # Service Orchestration with Kubernetes
 
-A screenshots of kubectl commands show the Frontend and API projects deployed in Kubernetes. 
+* A screenshots of kubectl commands show the Frontend and API projects deployed in Kubernetes.  <br />
+![screenshots of kubectl commands](screenshots/eksclusterconsole.png)
 
-The output of kubectl get pods indicates that the pods are running successfully with the STATUS value Running.
+* The output of kubectl get pods indicates that the pods are running successfully with the STATUS value Running. <br />
+`kubectl get all`
+![kubectlrunning](screenshots/kubectlgetall.png)
 
-The output of kubectl describe services does not expose any sensitive strings such as database passwords.
+
+* The output of kubectl describe services does not expose any sensitive strings such as database passwords.
+![kubectldescribe](screenshots/kubectldescribe.png)
+
+
+# Debugging, Monitoring, and Logging
+
+* Screenshot of one of the backend API pod logs indicates user activity that is logged when an API call is made.
+`curl localhost:8080/api/v0/users`
+![logapi](screenshots/logapi.png)
