@@ -28,3 +28,20 @@ spec:
         ports:
         - containerPort: 8080
       restartPolicy: Always
+
+
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: reverseproxy
+spec:
+  scaleTargetRef:
+    apiVersion: extensions/v1beta1
+    kind: Deployment
+    name: reverseproxy
+  minReplicas: 1
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 40
+status:
+  currentReplicas: 1
+  desiredReplicas: 1
